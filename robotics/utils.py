@@ -120,8 +120,17 @@ def softmax(dist, precision=1.0):
     return output
 
 
-# Accumulate log evidence
 def acc_log_evidence(eta, Eta_m, mu, pi, pi_m, p):
+    """
+    Accumulate log evidence for discrete model
+    :param eta: prior of full model
+    :param Eta_m: priors of reduced models
+    :param mu: posterior of full model
+    :param pi: prior precision of full model
+    :param pi_m: prior precision of reduced models
+    :param p: posterior precision of full model
+    :return: log evidence
+    """
     eta_rng = normalize(eta.detach().clone(), (-1, 1), rng=False)
     Eta_m_rng = normalize(Eta_m.detach().clone(), (-1, 1), rng=False)
     mu_rng = normalize(mu.detach().clone(), (-1, 1), rng=False)
@@ -135,8 +144,16 @@ def acc_log_evidence(eta, Eta_m, mu, pi, pi_m, p):
     return L_t.sum(dim=tuple(range(1, L_t.dim()))) / 2
 
 
-# Perform Bayesian model comparison
 def bmc(probs, log_evidence, weight, gain_prior, gain_evidence):
+    """
+    Perform Bayesian model comparison
+    :param probs: prior probabilities
+    :param log_evidence: log evidence
+    :param weight: precision of softmax
+    :param gain_prior: gain of prior
+    :param gain_evidence: gain of evidence
+    :return:
+    """
     E = - log_stable(probs) * gain_prior - log_evidence * gain_evidence
 
     return softmax(-E, weight)

@@ -3,10 +3,23 @@ import torch
 import utils
 
 
-# Define dynamic unit class
 class DynUnit:
     def __init__(self, dim, inputs, disc_obs, pi_eta_x, p_x,
                  pi_x, pi_x_m, lr, f, lmbda, g=None):
+        """
+        Dynamic unit class
+        :param dim: dimension of hidden states
+        :param inputs: parent of unit
+        :param disc_obs: discrete observation (to dynamics function)
+        :param pi_eta_x: precision of hidden states
+        :param p_x: posterior precision of dynamics
+        :param pi_x: prior precision of dynamics
+        :param pi_x_m: prior precision of dynamics of reduced models
+        :param lr: learning rate
+        :param f: dynamics function
+        :param lmbda: attractor gain
+        :param g: likelihood function
+        """
         # Point to inputs
         self.inputs = inputs
         self.disc_obs = disc_obs
@@ -109,6 +122,19 @@ class DynUnit:
 class StaticUnit:
     def __init__(self, dim, disc_obs, pi_eta_x, pi_eta_x_m,
                  p_eta_x, pi_x, lr, f, lmbda, Eta_m):
+        """
+        Static unit class
+        :param dim: dimension of hidden states
+        :param disc_obs: discrete observation (to hidden states)
+        :param pi_eta_x: precision of hidden states
+        :param pi_eta_x_m: precision of prior of reduced models
+        :param p_eta_x: posterior precision of hidden states
+        :param pi_x: prior precision of dynamics
+        :param lr: learning rate
+        :param f: dynamics function
+        :param lmbda: attractor gain
+        :param Eta_m: priors of reduced models
+        """
         # Point to discrete observations
         self.disc_obs = disc_obs
         self.L = torch.zeros_like(disc_obs)
@@ -192,6 +218,14 @@ class StaticUnit:
 # Define observation class
 class Obs:
     def __init__(self, dim, inputs, pi_o, g, lr=None):
+        """
+        Observation class
+        :param dim: dimension of observation
+        :param inputs: parent of observation
+        :param pi_o: precision of observation
+        :param g: likelihood function
+        :param lr: learning rate
+        """
         # Point to inputs
         self.inputs = inputs
 

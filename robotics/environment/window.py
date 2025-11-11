@@ -115,7 +115,6 @@ class Window(pyglet.window.Window):
                          self.objects.obj_pos])
         obj_vel = np.tile(c.t_vel, (2, 1)).T * self.objects.obj_dirs
         vel = np.vstack([[self.body.get_vel()[-1]], obj_vel])
-        # vel = np.vstack([[np.zeros(2)], obj_vel])
 
         vis_norm = utils.normalize(np.array([pos, vel]), c.norm_cart)
         vis_noise = utils.add_gaussian_noise(vis_norm, c.w_s)

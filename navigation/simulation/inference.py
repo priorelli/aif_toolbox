@@ -29,7 +29,7 @@ class Inference(Window):
         # Get observations
         O = [self.get_prop_obs(), self.get_visual_obs()]
 
-        # Perform free energy step
+        # Perform inference step
         action = self.brain.inference_step(O, self.step)
 
         # Update body

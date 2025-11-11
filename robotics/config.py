@@ -10,44 +10,44 @@ fps = 200
 # Environment
 dt = 0.3
 
-w_s = 0
-w_a = 0
+w_s = 0  # Sensory noise
+w_a = 0  # Action noise
 
-t_pos = [-250, -250], [-250, 250], [250, -250], [250, 250]
+t_pos = [-250, -250], [-250, 250], [250, -250], [250, 250]  # Target positions
 t_size = 30
-t_vel = 2, 2, 2, 2
-t_dir = None, None, None, None
+t_vel = 2, 2, 2, 2  # Target velocities
+t_dir = None, None, None, None  # Target directions
 
 # Brain (continuous)
-eta_x_int = [0, 0, 0, 0]
+eta_x_int = [0, 0, 0, 0]  # Prior of hidden states
 x_int_start = None
 
-pi_eta_x_int = 0.0
-pi_x_int = 0.5
-pi_x_m_int = pi_x_int
+pi_eta_x_int = 0.0  # Precision of prior prediction error (int)
+pi_x_int = 0.5  # Precision of dynamics prediction error (int)
+pi_x_m_int = pi_x_int  # Precision of reduced models (int)
 p_x_int = 1.0
-pi_prop = 1.0
+pi_prop = 1.0  # Precision of prop prediction error
 
-pi_eta_x_ext = 0.5
-pi_x_ext = pi_x_int
-pi_x_m_ext = pi_x_ext
+pi_eta_x_ext = 0.5  # Precision of prior prediction error (ext)
+pi_x_ext = pi_x_int  # Precision of dynamics prediction error (ext)
+pi_x_m_ext = pi_x_ext  # Precision of reduced models (ext)
 p_x_ext = p_x_int
-pi_vis = 1.0
+pi_vis = 1.0  # Precision of visual prediction error
 
-lambda_int = 0.0
-lambda_ext = 0.5
+lambda_int = 0.0  # Attractor gain (int)
+lambda_ext = 0.5  # Attractor gain (ext)
 
-lr_int = 1.0
-lr_ext = 1.0
+lr_int = 1.0  # Learning rate (int)
+lr_ext = 1.0  # Learning rate (ext)
 lr_a = 1.0
 
 # Brain (discrete)
-n_tau = 50
-n_policy = 2
+n_tau = 50  # Steps of evidence accumulation
+n_policy = 2  # Number of discrete policies
 
-gain_prior = 1.0
-gain_evidence = 1.0
-w_bmc = 1.0
+gain_prior = 1.0  # Gain of prior in BMC
+gain_evidence = 1.0  # Gain of evidence in BMC
+w_bmc = 1.0  # Precision of BMC
 
 # Simulation
 n_objects = 4
