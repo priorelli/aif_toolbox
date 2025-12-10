@@ -1,7 +1,7 @@
 # Toolbox for hybrid models in active inference
 
 <p align="center">
-  <img src="/env.png">
+  <img src="env.png">
 </p>
 
 This repository contains a toolbox  that can help researchers develop computational models and simulations in continuous-time active inference with planning in discrete state space. There are two setups:
