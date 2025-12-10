@@ -110,7 +110,6 @@ class Window(pyglet.window.Window):
 
     # Get visual observation
     def get_visual_obs(self):
-        print(self.body.get_vel()[-1])
         pos = np.vstack([[self.body.poses[-1, :2]],
                          self.objects.obj_pos])
         obj_vel = np.tile(c.t_vel, (2, 1)).T * self.objects.obj_dirs
