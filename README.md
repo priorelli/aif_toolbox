@@ -1,5 +1,9 @@
 # Toolbox for hybrid models in active inference
 
+<p align="center">
+  <img src="/env.png">
+</p>
+
 This repository contains a toolbox  that can help researchers develop computational models and simulations in continuous-time active inference with planning in discrete state space. There are two setups:
 - one for robotics, in which a kinematic model (which can be defined from the config file) has to reach one of four moving targets with its end-effector. The active inference agent comprises a hierarchical model with intrinsic and extrinsic levels, representing joint angles and Cartesian positions, respectively;
 - one for navigation, in which an agent has to move in an environment and reach one of four moving targets.
