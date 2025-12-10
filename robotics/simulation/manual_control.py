@@ -44,4 +44,6 @@ class ManualControl(Window):
     # Get action from user input
     def get_pressed(self):
         return [(key.RIGHT in self.keys) - (key.LEFT in self.keys),
-                (key.UP in self.keys) - (key.DOWN in self.keys)]
+                (key.UP in self.keys) - (key.DOWN in self.keys),
+                (key.Z in self.keys) - (key.X in self.keys),
+                (key.A in self.keys) - (key.S in self.keys)]
