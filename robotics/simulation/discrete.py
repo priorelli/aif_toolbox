@@ -37,7 +37,7 @@ class Discrete:
         self.agent = Agent(self.A, self.B, self.C, self.D,
                            A_dependencies=self.A_deps,
                            B_dependencies=self.B_deps,
-                           policy_len=c.n_policy, onehot_obs=True,
+                           policy_len=c.n_policy, categorical_obs=True,
                            learn_A=False, learn_B=False, learn_D=False)
 
         # Set prior and expected obs
@@ -118,7 +118,7 @@ class Discrete:
         # self.agent = self.agent.infer_parameters(qs, o, action, lr_pA=1.0)
 
         # Update prior and expected obs
-        self.prior, _ = self.agent.update_empirical_prior(action, qs)
+        self.prior = self.agent.update_empirical_prior(action, qs)
         for i, qo in enumerate(self.get_expected_obs()):
             self.qo[i][:] = torch.from_numpy(np.array(qo))
 
